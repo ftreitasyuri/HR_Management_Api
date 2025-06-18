@@ -1,61 +1,144 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# API de Gestão de Funcionários
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+Bem-vindo à API de Gestão de Funcionários! Este projeto é uma API RESTful desenvolvida com Laravel 12 e utiliza Laravel Sanctum para autenticação e proteção de rotas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Sobre o Projeto
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Este é a **versão 1 (v1)** do projeto, focado na gestão de informações de funcionários. A API fornece autenticação login e logout e a possibilidade de listas, cadastrar editar e exluir os dados dos funcionários,
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tecnologias Utilizadas
 
-## Learning Laravel
+-   **Laravel 12**: Framework PHP para desenvolvimento web.
+-   **Laravel Sanctum**: Pacote de autenticação para SPAs, aplicativos móveis e APIs simples baseadas em token.
+-   **PHP**: Linguagem de programação.
+-   **MySQL**: Sistema de gerenciamento de banco de dados.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Funcionalidades da v1
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-   **Autenticação de Usuários**: Login e Logout tanto na api quando na web
+-   **Gestão de Funcionários**: \* Criação de novos registros de funcionários.
+    -   Visualização de funcionários (individuais e listagem).
+    -   Atualização de informações de funcionários.
+    -   Exclusão de registros de funcionários.
+-   **Próximas features**:
+    -   Crud do usuário    
+    -   Controller para os dados para dashboard
+-   **Proteção de Rotas**: Todas as rotas de gerenciamento de funcionários são protegidas por autenticação via token.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Primeiros Passos
 
-## Laravel Sponsors
+Siga as instruções abaixo para configurar e executar o projeto em sua máquina local.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Pré-requisitos
 
-### Premium Partners
+Certifique-se de ter os seguintes softwares instalados:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+-   PHP >= 8.2
+-   Composer
+-   Node.js e NPM
+-   Um sistema de banco de dados (MySQL, PostgreSQL, SQLite, etc.)
 
-## Contributing
+### Instalação
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1.  **Clone o repositório:**
 
-## Code of Conduct
+    ```bash
+    git init
+    git clone https://github.com/ftreitasyuri/APIs.git
+    cd nome-do-projeto
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2.  **Instale as dependências do Composer:**
 
-## Security Vulnerabilities
+    ```bash
+    composer install
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3.  **Copie o arquivo de ambiente e configure-o:**
 
-## License
+    ```bash
+    cp .env.example .env
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    Abra o arquivo `.env` e configure suas credenciais de banco de dados, `APP_URL` e outras variáveis de ambiente necessárias.
+
+    ```dotenv
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=smte_hr_management
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+
+4.  **Gere a chave da aplicação:**
+
+    ```bash
+    php artisan key:generate
+    ```
+
+5.  **Execute as migrações do banco de dados:**
+
+    ```bash
+    php artisan migrate
+    ```
+
+6.  **Seeder de dados:**
+    Para popular o banco de dados com alguns dados de exemplo, execute o seeder:
+
+    ```bash
+    php artisan db:seed
+
+    ```
+
+7.  **Inicie o servidor de desenvolvimento:**
+
+    ```bash
+    php artisan serve
+    php -S localhost:8000 -t public
+    ```
+
+8. **Para limpar caches**
+````
+composer clear-cache
+composer install
+composer dump-autoload -o
+
+php artisan config-cache
+
+```
+
+## Uso da API
+
+### Autenticação
+
+Para acessar as rotas protegidas, você precisará obter um token de autenticação.
+
+-   **Login de Usuário:** `POST /api/login`
+    -   `email`, `password`
+
+Após o login, você receberá um token de acesso que deve ser incluído no cabeçalho `Authorization` de todas as suas requisições subsequentes, no formato `Bearer {YOUR_TOKEN}`.
+
+### Endpoints da API
+
+Todos os endpoints de funcionários requerem autenticação.
+
+-   **Listar todos os funcionários:** `GET /api/funcionarios`
+-   **Criar um novo funcionário:** `POST /api/funcionarios`
+    - Para ver os campos use a migration de funcionários ou a model, porque são muitos campos
+-   **Obter um funcionário específico:** `GET /api/funcionarios/{id}`
+-   **Atualizar um funcionário:** `PUT /api/funcionarios/{id}`
+    -  Para ver os campos use a migration de funcionários ou a model, porque são muitos campos
+-   **Excluir um funcionário:** `DELETE /api/funcionarios/{id}`
+
+---
+
+## Contribuição
+
+Contribuições são bem-vindas! Se você tiver alguma sugestão, melhoria ou encontrar um bug, sinta-se à vontade para abrir uma _issue_ ou enviar um _pull request_.
+
+
+**Desenvolvido por:** [Yuri Freitas / SmartTechEnterprise]
+**Data:** Junho de 2025
